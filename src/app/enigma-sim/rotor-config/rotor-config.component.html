@@ -1,0 +1,22 @@
+<div>Rotor {{index}}</div>
+<mat-form-field appearance="fill">
+  <mat-label>Rotor Type</mat-label>
+  <mat-select [(value)]="rotorConfig" (selectionChange)="changeRotor($event)">
+    <mat-option *ngFor="let r of rotorList" [value]="r">{{r.name}}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field appearance="fill">
+  <mat-label>Ring Offset</mat-label>
+  <mat-select [(value)]="ringOffset" (selectionChange)="changeRingOffset($event)">
+    <mat-option *ngFor="let a of alphabet; let j=index" [value]="j">{{a}}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field appearance="fill">
+  <mat-label>Offset</mat-label>
+  <mat-select [(value)]="offset" (selectionChange)="changeOffset($event)">
+    <mat-option *ngFor="let a of alphabet; let j=index" [value]="j">{{a}}</mat-option>
+  </mat-select>
+</mat-form-field>
+

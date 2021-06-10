@@ -1,9 +1,9 @@
 import { RotorConfig } from "../rotorConfig";
 
-class RotorIIIC implements RotorConfig {
-  wiring = 'UQNTLSZFMREHDPXKIBVYGJCWOA';
+class RotorIIC implements RotorConfig {
+  wiring = 'HQZGPJTMOBLNCIFDYAWVEUSRKX';
   notch = '';
-  name = 'Rotor IIIC';
+  name = 'Rotor IIC';
 }
 
-export const rotorIIIC = new RotorIIIC();
+export const rotorIIC = new RotorIIC();

@@ -1,3 +1,4 @@
+import { DebuggerService } from "../services/debugger.service";
 import { Rotor } from "./rotors/rotor";
 import { Reflector } from "./stators/reflector";
 
@@ -5,9 +6,17 @@ export class Enigma {
   rotors: Rotor[];
   reflector: Reflector;
 
+  debuggerSvc: DebuggerService;
+
   setup(rotors: Rotor[], reflector: Reflector) {
     this.rotors = rotors;
     this.reflector = reflector;
+  }
+
+  addDebugger(debuggerSvc: DebuggerService) {
+    this.debuggerSvc = debuggerSvc;
+    this.rotors.forEach(r => r.addDebugger(debuggerSvc));
+    this.reflector.addDebugger(debuggerSvc);
   }
 
   runString(s: string) {
@@ -15,6 +24,7 @@ export class Enigma {
   }
 
   runLetter(x: string) {
+    this.debuggerSvc?.log("------------------------------")
     this.turnRotors();
     return this.runReverse(this.runReflector(this.runStraight(x)));
   }

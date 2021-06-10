@@ -1,3 +1,4 @@
+import { DebuggerService } from "src/app/services/debugger.service";
 import { Alphabet } from "../alphabet";
 import { RotorConfig } from "./rotorConfig";
 
@@ -10,6 +11,8 @@ export class Rotor {
 
   // dynamic values
   step: number;
+
+  debuggerSvc: DebuggerService;
 
   constructor(config: RotorConfig, ringShift = 0, step = 0) {
     this.wiring = config.wiring;
@@ -24,43 +27,51 @@ export class Rotor {
     }
   }
 
+  setRingShift(shift: number) {
+    this.ringShift = shift;
+  }
+
+  setStep(step: number) {
+    this.step = step;
+  }
+
+  addDebugger(debuggerSvc: DebuggerService) {
+    this.debuggerSvc = debuggerSvc;
+  }
+
   transmitStraight(x: string) {
-    console.log(this.name + " in: " + x);
-    console.log("step: " + this.step);
+    this.debuggerSvc?.log(this.name + " with step " + this.step);
 
     const inputMapping = Alphabet.index(x) + this.step;
-    console.log("mapped as: " + Alphabet.charAt(inputMapping));
-
     const wiring = this.wiring.charAt(Alphabet.normalize(inputMapping));
-
-    console.log("wiring: " + wiring); 
-
     const outputMapping =  Alphabet.charAt(Alphabet.index(wiring) - this.step);
 
-    console.log("out: " + outputMapping);
+    this.debuggerSvc?.log("&nbsp;&nbsp;&nbsp;&nbsp;Input letter: " + x + ", Output letter: " + outputMapping); 
+    this.debuggerSvc?.log("&nbsp;&nbsp;&nbsp;&nbsp;Full wiring: " +
+      x + " &rarr; " + Alphabet.charAt(inputMapping) +" &rArr; " + wiring + " &rarr; " + outputMapping); 
+
     return outputMapping;
   };
 
   transmitReverse(x: string) {
-    console.log(this.name + " in: " + x);
+    this.debuggerSvc?.log(this.name + " with step " + this.step);
 
-    const input = Alphabet.index(x) + this.step;
-
-    console.log("mapped as: " + Alphabet.charAt(input));
-
-    const wiring = this.wiring.indexOf(Alphabet.charAt(input));
-
-    console.log("wiring: " + this.wiring.charAt(wiring)); 
-
+    const inputMapping = Alphabet.charAt(Alphabet.index(x) + this.step);
+    const wiring = this.wiring.indexOf(inputMapping);
     const outputMapping =  Alphabet.charAt(wiring - this.step);
 
-    console.log("out: " + outputMapping);
+    this.debuggerSvc?.log("&nbsp;&nbsp;&nbsp;&nbsp;Input letter: " + x + ", Output letter: " + outputMapping); 
+    this.debuggerSvc?.log("&nbsp;&nbsp;&nbsp;&nbsp;Full wiring: " +
+      x + " &rarr; " + inputMapping +" &rArr; " + Alphabet.charAt(wiring) + " &rarr; " + outputMapping); 
     return outputMapping;
   }
 
   turn(): boolean {
     const notchStep = this.notch.includes(Alphabet.charAt(this.step));
     this.step = Alphabet.normalize(this.step + 1);
+    if(notchStep) {
+      this.debuggerSvc?.log(this.name + " hit notch point");
+    }
     return notchStep;
   }
 

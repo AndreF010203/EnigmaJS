@@ -1,4 +1,4 @@
-import { RotorConfig } from "../rotorConfig";
+import { RotorConfig } from "../../rotorConfig";
 
 class RotorVI implements RotorConfig {
   wiring = 'JPGVOUMFYQBENHZRDKASXLICTW';

@@ -1,0 +1,11 @@
+<div>
+  <div>Choose an historical machine:</div>
+  <mat-form-field appearance="fill">
+    <mat-label>Historical machine:</mat-label>
+    <mat-select [(value)]="enigmaConfig">
+      <mat-option *ngFor="let enigma of enigmaList" [value]="enigma">{{enigma.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <app-config [enigmaConfig]="enigmaConfig"></app-config>
+</div>

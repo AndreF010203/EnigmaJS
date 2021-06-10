@@ -1,0 +1,15 @@
+<mat-form-field>
+  <mat-label>Input String</mat-label>
+  <input matInput placeholder="Hello World!" [(ngModel)]="inputString" autocomplete="false">
+</mat-form-field>
+<button mat-button color="primary" (click)="encrypt()">Run</button>
+
+<br>
+
+<div> {{outputString}} </div>
+
+
+
+
+<button mat-button color="primary" (click)="toggleDebugMode()">Debug Mode</button>
+<app-debug-mode [display]="debugMode"></app-debug-mode>

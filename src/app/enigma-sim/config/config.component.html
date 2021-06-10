@@ -1,0 +1,28 @@
+<div *ngIf="enigmaConfig" class="row">
+  <div class="col-md-8 col-12">
+    <div>
+      Choose the machine initial configuration:
+    </div>
+    <div>
+      <div *ngFor="let i of rotorsNumbers">
+        <app-rotor-config [index]="i" 
+          [rotorList]="enigmaConfig.availableRotors" 
+          [offset]="rotors[i-1] ? rotors[i-1].step : 0" (rotorOut)="setRotor($event, i-1)">
+        </app-rotor-config>
+      </div>
+      <div>
+        <div>Reflector</div>
+        <mat-form-field appearance="fill">
+          <mat-label>Reflector Type</mat-label>
+          <mat-select [(value)]="reflectorConfig" (selectionChange)="setReflector($event)">
+            <mat-option *ngFor="let reflector of enigmaConfig.availableReflectors" 
+              [value]="reflector">{{reflector.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 col-12">
+    <app-core [enigma]="enigma"></app-core>
+  </div>
+</div>

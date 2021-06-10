@@ -1,0 +1,13 @@
+.console {
+  width: 100%;
+  height: auto;
+  min-height: 5rem;
+  background: #08090a;
+  color: #7ed07e;
+  border-radius: 3px;
+  border: 2px solid #838383;
+  max-height: 21rem;
+  overflow-y: auto;
+  font-family: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  font-size: 14px;
+}
