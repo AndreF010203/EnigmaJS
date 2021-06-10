@@ -2,7 +2,7 @@ import { RotorConfig } from "../../rotorConfig";
 
 class RotorII implements RotorConfig {
   wiring = 'AJDKSIRUXBLHWTMCQGZNPYFVOE';
-  notch = 'M';
+  notch = 'E';
   name = 'Rotor II';
 }
 
