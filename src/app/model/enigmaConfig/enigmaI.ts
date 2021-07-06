@@ -24,4 +24,5 @@ export class EnigmaI implements EnigmaConfig {
   availablePlugboard = true;
   name = 'Enigma I';
   rotors = 3;
+  alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 }

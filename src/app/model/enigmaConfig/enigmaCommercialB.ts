@@ -16,4 +16,5 @@ export class EnigmaCommercialB implements EnigmaConfig {
   availablePlugboard = false;
   name = 'Commercial Enigma B';
   rotors = 3;
+  alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 }

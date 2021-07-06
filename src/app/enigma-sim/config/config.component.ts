@@ -11,7 +11,7 @@ import { ReflectorConfig } from 'src/app/model/stators/reflectorConfig';
   templateUrl: './config.component.html',
   styleUrls: ['./config.component.css']
 })
-export class ConfigComponent implements OnInit, OnChanges {
+export class ConfigComponent implements OnChanges {
 
   @Input()
   enigmaConfig: EnigmaConfig;
@@ -30,11 +30,9 @@ export class ConfigComponent implements OnInit, OnChanges {
 
   reflectorConfig: ReflectorConfig;
 
-  constructor() { }
+  staticETW: Reflector;
 
-  ngOnInit(): void {
-    this.alphabet = Alphabet.list.split('');
-  }
+  constructor() { }
 
   ngOnChanges(changes) {
     if(changes.enigmaConfig && changes.enigmaConfig.currentValue && changes.enigmaConfig.currentValue.rotors) {
@@ -43,6 +41,10 @@ export class ConfigComponent implements OnInit, OnChanges {
       this.rotors = [];
       this.reflectorConfig = this.enigmaConfig.availableReflectors[0];
       this.reflector = new Reflector(this.reflectorConfig);
+      this.staticETW = this.enigmaConfig.staticETW ? new Reflector(this.enigmaConfig.staticETW) : null;
+
+      Alphabet.setAlphabet(this.enigmaConfig.alphabet);
+      this.alphabet = Alphabet.list.split('');
     }
   }
 
@@ -57,6 +59,6 @@ export class ConfigComponent implements OnInit, OnChanges {
   }
 
   buildEnigma() {
-    this.enigma.setup(this.rotors, this.reflector);
+    this.enigma.setup(this.rotors, this.reflector, this.staticETW);
   }
 }

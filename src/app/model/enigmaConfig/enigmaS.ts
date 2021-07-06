@@ -16,4 +16,5 @@ export class EnigmaS implements EnigmaConfig {
   availablePlugboard = true;
   name = 'Sonderenigma (Special Enigma)';
   rotors = 3;
+  alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 }

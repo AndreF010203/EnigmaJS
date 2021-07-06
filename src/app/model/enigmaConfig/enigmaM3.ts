@@ -28,4 +28,5 @@ export class EnigmaM3 implements EnigmaConfig {
   availablePlugboard = true;
   name = 'Enigma M3';
   rotors = 3;
+  alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 }

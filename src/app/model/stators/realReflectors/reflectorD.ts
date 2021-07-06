@@ -1,7 +1,7 @@
 import { ReflectorConfig } from "../reflectorConfig";
 
 class ReflectorD implements ReflectorConfig {
-  wiring = 'FVPJIAOYEDRZXWGCTKUQSBNMHL';
+  wiring = 'IMETCGFRAYSQBZXWLHKDVUPOJN';
   name = 'UKW-D';
 }
 

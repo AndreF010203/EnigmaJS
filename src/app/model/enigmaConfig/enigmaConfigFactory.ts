@@ -6,6 +6,9 @@ import { EnigmaM3 } from "./enigmaM3";
 import { EnigmaM4 } from "./enigmaM4";
 import { EnigmaNorway } from "./enigmaNorway";
 import { EnigmaS } from "./enigmaS";
+import { EnigmaD } from "./enigmaD";
+import { EnigmaG } from "./enigmaG";
+import { EnigmaZ } from "./enigmaZ";
 
 export class EnigmaConfigList {
   static enigmaList: EnigmaConfig[] = [
@@ -15,6 +18,9 @@ export class EnigmaConfigList {
     new EnigmaCommercialB(),
     new EnigmaNorway(),
     new EnigmaS(),
+    new EnigmaD(),
+    new EnigmaG(),
+    new EnigmaZ(),
   ];
 }
 

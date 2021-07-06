@@ -5,12 +5,14 @@ import { Reflector } from "./stators/reflector";
 export class Enigma {
   rotors: Rotor[];
   reflector: Reflector;
+  staticETW: Reflector;
 
   debuggerSvc: DebuggerService;
 
-  setup(rotors: Rotor[], reflector: Reflector) {
+  setup(rotors: Rotor[], reflector: Reflector, staticETW?: Reflector) {
     this.rotors = rotors;
     this.reflector = reflector;
+    this.staticETW = staticETW;
   }
 
   addDebugger(debuggerSvc: DebuggerService) {
@@ -26,7 +28,7 @@ export class Enigma {
   runLetter(x: string) {
     this.debuggerSvc?.log("------------------------------")
     this.turnRotors();
-    return this.runReverse(this.runReflector(this.runStraight(x)));
+    return this.runReverse(this.runReflector(this.runStraight(this.runETW(x))));
   }
 
   turnRotors(i = 0) {
@@ -45,5 +47,9 @@ export class Enigma {
 
   runReflector(x: string): string {
     return this.reflector.transmit(x);
+  }
+
+  runETW(x: string): string {
+    return this.staticETW ? this.staticETW.transmit(x) : x;
   }
 }

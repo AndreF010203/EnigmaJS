@@ -17,5 +17,6 @@ export class EnigmaSimComponent implements OnInit {
 
   ngOnInit(): void {
     this.enigmaList = EnigmaConfigList.enigmaList;
+    this.enigmaConfig = this.enigmaList[0];
   }
 }

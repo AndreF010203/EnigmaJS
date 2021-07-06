@@ -20,4 +20,5 @@ export class EnigmaNorway implements EnigmaConfig {
   availablePlugboard = true;
   name = 'Norway Enigma';
   rotors = 3;
+  alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 }

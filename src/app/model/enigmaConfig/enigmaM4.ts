@@ -32,4 +32,5 @@ export class EnigmaM4 implements EnigmaConfig {
   availablePlugboard = true;
   name = 'Enigma M4';
   rotors = 4;
+  alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 }

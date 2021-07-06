@@ -1,7 +1,6 @@
-const list = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
 export class Alphabet {
-  static list = list;
+  static list: string;
+  static len: number;
 
   static index(x: string): number {
     return Alphabet.list.indexOf(x);
@@ -16,6 +15,8 @@ export class Alphabet {
     return mod < 0 ? Alphabet.len + mod : mod;
   }
 
-  static len = list.length;
-
+  static setAlphabet(list: string) {
+    this.list = list;
+    this.len = list.length;
+  }
 }

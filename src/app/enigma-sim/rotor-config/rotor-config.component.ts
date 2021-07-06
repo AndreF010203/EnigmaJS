@@ -18,6 +18,9 @@ export class RotorConfigComponent implements OnInit, OnChanges {
   @Input()
   offset: number;
 
+  @Input()
+  alphabet: string[];
+
   @Output()
   rotorOut = new EventEmitter<Rotor>();
 
@@ -27,10 +30,9 @@ export class RotorConfigComponent implements OnInit, OnChanges {
 
   ringOffset: number;
 
-  alphabet: string[];
+
 
   ngOnInit(): void {
-    this.alphabet = Alphabet.list.split('');
     this.reset();
   }
 

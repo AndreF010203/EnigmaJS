@@ -3,10 +3,13 @@
     <div>
       Choose the machine initial configuration:
     </div>
+    <div *ngIf="enigmaConfig.staticETW">
+      Static ETW present in input. 
+    </div>
     <div>
       <div *ngFor="let i of rotorsNumbers">
         <app-rotor-config [index]="i" 
-          [rotorList]="enigmaConfig.availableRotors" 
+          [rotorList]="enigmaConfig.availableRotors" [alphabet]="alphabet"
           [offset]="rotors[i-1] ? rotors[i-1].step : 0" (rotorOut)="setRotor($event, i-1)">
         </app-rotor-config>
       </div>
